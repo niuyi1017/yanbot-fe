@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from './router'
 
 import './assets/main.css'
+import 'vant/es/toast/style'
 
 const app = createApp(App)
 

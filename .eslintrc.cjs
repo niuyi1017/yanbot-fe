@@ -21,8 +21,10 @@ module.exports = {
         singleQuote: true,
         semi: false,
         trailingComma: 'none',
-        printWidth: 100
+        printWidth: 120,
+        bracketSameLine: true
       }
-    ]
+    ],
+    'vue/no-setup-props-destructure': 0
   }
 }
