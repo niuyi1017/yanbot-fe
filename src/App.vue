@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterView, useRouter } from 'vue-router'
 import { ref } from 'vue'
+import { getTest } from '@/api'
 
 interface TabbarItems {
   text: string
@@ -32,6 +33,13 @@ const router = useRouter()
 const handleTabChange = (index: number) => {
   activeTab.value = index
   router.push(tabbarItems.value[index].url || '/')
+}
+
+try {
+  let getTestRes = await getTest()
+  console.log(getTestRes)
+} catch (err) {
+  console.log(err)
 }
 </script>
 

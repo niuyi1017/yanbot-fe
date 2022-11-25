@@ -6,10 +6,12 @@
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "build-only": "vite build",
+    "build:staging": "run-p type-check build-only --mode --mode staging",
     "type-check": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "axios": "^1.2.0",
     "pinia": "^2.0.23",
     "stylus": "^0.59.0",
     "unplugin-vue-components": "^0.22.11",
