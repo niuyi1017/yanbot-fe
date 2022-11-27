@@ -6,9 +6,9 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,22 +19,22 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
-    - name: init hexo & build
-      run: | 
-        npm install
-        npm run build
+      # Runs a single command using the runners shell
+      - name: build
+        run: |
+          npm install
+          npm run build
 
-    # Runs a set of commands using the runners shell
-    - name: deploy to aliyun oss
-      uses: manyuanrong/setup-ossutil@master
-      with:
-        endpoint: oss-cn-hangzhou.aliyuncs.com
-        access-key-id: ${{ secrets.ACCESS_KEY_ID }}
-        access-key-secret: ${{ secrets.ACCESS_KEY_SECRET }}
+      # Runs a set of commands using the runners shell
+      - name: deploy to aliyun oss
+        uses: manyuanrong/setup-ossutil@master
+        with:
+          endpoint: oss-cn-hangzhou.aliyuncs.com
+          access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+          access-key-secret: ${{ secrets.ACCESS_KEY_SECRET }}
 
-    - name: Deply To OSS
-      run: ossutil cp public oss://yanbot/ -rf
+      - name: Deply To OSS
+        run: ossutil cp public oss://yanbot/ -rf
