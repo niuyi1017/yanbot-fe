@@ -1,11 +1,12 @@
-//
-// import { type AxiosRequestConfig } from 'axios'
+const handleRequestError = (err: any) => {
+  console.log('handleRequestError', err)
+  return Promise.reject(err)
+}
 
 const reqestInterceptor = (config: any) => {
   const token = 'Bearer ' + localStorage.getItem('token') || 'mock-token'
-  console.log(config.headers)
   config.headers['Authorization'] = token
   return config
 }
 
-export default reqestInterceptor
+export { reqestInterceptor, handleRequestError }

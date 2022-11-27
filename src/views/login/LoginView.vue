@@ -1,8 +1,14 @@
-<template>
-  <div class=""></div>
-</template>
 <script setup lang="ts">
-import {} from 'vue'
+import { useDark, useToggle } from '@vueuse/core'
+
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
 </script>
 
-<style lang="stylus" scoped></style>
+<template>
+  <button @click="toggleDark()">
+    <i inline-block align-middle i="dark:carbon-moon carbon-sun" />
+
+    <span class="ml-2">{{ isDark ? 'Dark' : 'Light' }}</span>
+  </button>
+</template>

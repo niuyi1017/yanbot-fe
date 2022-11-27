@@ -13,8 +13,6 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules: {
-    // quotes: [2, "single"],
-    // semi: [2, "never"],
     'prettier/prettier': [
       'warn',
       {

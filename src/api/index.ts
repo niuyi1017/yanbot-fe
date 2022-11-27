@@ -10,9 +10,16 @@ const getTest = (data?: any) => {
     data
   }
   const config: AxiosRequestConfig = {
-    timeout: 200000
+    timeout: 1000 * 20
   }
   return http(resuestParams, config)
 }
 
-export { getTest }
+const getTest2 = (data?: any) => {
+  return http({
+    url: '/tasks',
+    method: 'post',
+    data
+  })
+}
+export { getTest, getTest2 }
