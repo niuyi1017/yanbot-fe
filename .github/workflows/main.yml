@@ -37,4 +37,4 @@ jobs:
           access-key-secret: ${{ secrets.ACCESS_KEY_SECRET }}
 
       - name: Deply To OSS
-        run: ossutil cp public oss://yanbot/ -rf
+        run: ossutil cp dist oss://yanbot/ -rf
