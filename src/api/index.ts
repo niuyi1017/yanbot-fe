@@ -22,4 +22,11 @@ const getTest2 = (data?: any) => {
     data
   })
 }
-export { getTest, getTest2 }
+const cancelSubscribeTask = (data?: any) => {
+  return http({
+    url: '/tasks',
+    method: 'post',
+    data
+  })
+}
+export { getTest, getTest2, cancelSubscribeTask }

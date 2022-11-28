@@ -6,6 +6,9 @@ import router from './router'
 
 import './assets/main.css'
 import 'vant/es/toast/style'
+import 'vant/es/dialog/style'
+import 'vant/es/notify/style'
+import 'vant/es/image-preview/style'
 
 const app = createApp(App)
 

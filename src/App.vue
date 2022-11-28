@@ -11,7 +11,6 @@ interface TabbarItems {
 }
 
 const activeTab = ref<number>(0)
-
 const tabbarItems = ref<TabbarItems[]>([
   {
     text: '订阅',
