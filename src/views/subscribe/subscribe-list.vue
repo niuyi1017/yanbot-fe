@@ -67,7 +67,9 @@ onMounted(() => {
   onLoad()
 })
 
-const handleCancleSubscribe = (id) => {}
+const handleCancleSubscribe = (id: string) => {
+  console.log(id)
+}
 
 const getData = async () => {
   try {
