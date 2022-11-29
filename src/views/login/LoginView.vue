@@ -2,10 +2,10 @@
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 const handleWechatLogin = () => {
-  const redirect_uri = encodeURI('http://h5.yanbot.niuy.xyz/login')
+  const redirect_uri = encodeURIComponent('http://h5.yanbot.niuy.xyz/login')
   // const redirect_uri = encodeURI('http://192.168.101.55:5173/login')
   const url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4e928e912965b7c8&redirect_uri=${redirect_uri}&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect`
-  console.log(redirect_uri)
+  // console.log(redirect_uri, url)
   window.location.href = url
 }
 const checkCode = () => {
