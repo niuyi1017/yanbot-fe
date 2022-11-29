@@ -1,11 +1,12 @@
 import type { AxiosError, AxiosResponse } from 'axios'
+import { showFailToast } from 'vant'
 
 const handleBusinessError = (response: AxiosResponse) => {
   console.log('handleBusinessError: response', response)
   return Promise.reject(new Error())
 }
 const handleHttpError = (error: AxiosError) => {
-  console.log('handleHttpError: error', error)
+  showFailToast(error.message)
   return Promise.reject(error)
 }
 const responseInterceptor = (response: AxiosResponse) => {

@@ -27,7 +27,7 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { getTest } from '@/api'
+import { getTasks } from '@/api'
 interface SubscribeItem {
   _id: string
   taskTitle: string
@@ -73,8 +73,8 @@ const handleCancleSubscribe = (id: string) => {
 
 const getData = async () => {
   try {
-    let getTestRes = await getTest()
-    let data = getTestRes.data
+    let getTasksRes = await getTasks()
+    let data = getTasksRes.data
 
     return data || []
   } catch (err) {
@@ -90,7 +90,7 @@ console.log(subscribeList.value)
   height calc(100vh - var(--van-tabbar-height))
   // background #ccc
   .van-pull-refresh{
-    height 100%
+    min-height 100%
   }
   .no-data
     display flex
