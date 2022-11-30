@@ -8,4 +8,11 @@ const getWxUserProflieByCode = (params?: any) => {
     params
   })
 }
-export { getWxUserProflieByCode }
+const getWxUserProflieRefreshToken = (params?: any) => {
+  return http({
+    url: '/wx/userInfo',
+    method: 'get',
+    params
+  })
+}
+export { getWxUserProflieByCode, getWxUserProflieRefreshToken }

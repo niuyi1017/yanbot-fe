@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { RouterView, useRouter } from 'vue-router'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useLogin } from './utils/login'
+// import { useLogin } from '@/utils/login'
 
 interface TabbarItems {
   text: string
@@ -17,7 +19,7 @@ const tabbarItems = ref<TabbarItems[]>([
     isActived: true,
     defaultIcon: 'star-o',
     activedIcon: 'star',
-    url: '/'
+    url: '/subscribe-list'
   },
   {
     text: '学校',
@@ -32,6 +34,11 @@ const handleTabChange = (index: number) => {
   activeTab.value = index
   router.push(tabbarItems.value[index].url || '/')
 }
+onMounted(async () => {
+  const currentPath = window.location.pathname
+  await useLogin()
+  router.push(currentPath || tabbarItems.value[activeTab.value].url || '/')
+})
 </script>
 
 <template>

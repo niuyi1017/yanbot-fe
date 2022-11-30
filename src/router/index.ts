@@ -7,15 +7,16 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      redirect: '/subscribe-list'
+    },
+    {
+      path: '/subscribe-list',
       name: 'subscribeList',
       component: SubscribeList
     },
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
     },
     {

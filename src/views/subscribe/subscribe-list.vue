@@ -64,7 +64,7 @@ const onRefresh = () => {
 }
 
 onMounted(() => {
-  onLoad()
+  // onLoad()
 })
 
 const handleCancleSubscribe = (id: string) => {
@@ -82,7 +82,7 @@ const getData = async () => {
   }
 }
 
-console.log(subscribeList.value)
+// console.log(subscribeList.value)
 </script>
 
 <style lang="stylus" scoped>
