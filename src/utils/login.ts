@@ -1,7 +1,7 @@
 import { getWxUserProflieByCode, getWxUserProflieRefreshToken } from '@/api/wxAuth'
 
 const USER_INFO_KEY = 'userInfo'
-const REDIRECT_URI = encodeURIComponent(' ')
+const REDIRECT_URI = encodeURIComponent('http://192.168.101.55:5173')
 
 const useLogin = async () => {
   // 1.检查 storage 里有没有 useInfo && useInfo.refreshToken
@@ -11,9 +11,15 @@ const useLogin = async () => {
   if (userInfo && userInfo.authRefreshToken) {
     // 2. 如果 refreToken 存在，则通过 refreToken 来获取 用户信息
     const res = await getWxUserProflieRefreshToken({ refreshToken: userInfo.authRefreshToken })
-    console.log('通过 refreToken 来获取 用户信息', res)
-    localStorage.setItem(USER_INFO_KEY, JSON.stringify(res.data))
-    return true
+    console.log('通过 refreToken 来获取 用户信息', res.data)
+    if (res && res.data && res.data.openid) {
+      localStorage.setItem(USER_INFO_KEY, JSON.stringify(res.data))
+    } else {
+      console.log('通过 refreToken 来获取 用户信息失败，尝试通过 code 登录')
+      const state = 1
+      const url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4e928e912965b7c8&redirect_uri=${REDIRECT_URI}&response_type=code&scope=snsapi_userinfo&state=${state}#wechat_redirect`
+      window.location.href = url
+    }
   } else {
     // 3. 如果 code 存在， 则通过获取 code 获取用户信息
     const { code, state } = getUrlParams(window.location.href)
@@ -21,12 +27,14 @@ const useLogin = async () => {
       console.log(code, state)
       try {
         const res = await getWxUserProflieByCode({ code, state })
-        console.log('通过获取 code 获取用户信息', res)
-        localStorage.setItem(USER_INFO_KEY, JSON.stringify(res.data))
-        return true
+        console.log('通过获取 code 获取用户信息', res.data)
+        if (res && res.data && res.data.openid) {
+          localStorage.setItem(USER_INFO_KEY, JSON.stringify(res.data))
+        } else {
+          console.log('通过获取 code 获取用户信息失败')
+        }
       } catch (err) {
         console.log(err)
-        return false
       }
     } else {
       const state = 1
