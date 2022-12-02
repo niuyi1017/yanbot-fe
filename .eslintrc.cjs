@@ -21,7 +21,8 @@ module.exports = {
         trailingComma: 'none',
         printWidth: 120,
         bracketSameLine: true,
-        endOfLine: 'auto'
+        endOfLine: 'auto',
+        arrowParens: 'avoid'
       }
     ],
     'vue/no-setup-props-destructure': 0

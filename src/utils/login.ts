@@ -10,12 +10,9 @@ const useLogin = async () => {
   const userInfo = JSON.parse(userInfoStr)
   const isRefreshTokenWork = (new Date().getTime() - userInfo.refreshTokenTime) / (1000 * 60 * 60 * 24) < EXPIRES_IN
 
-  console.log('userinfo', userInfo)
-
   if (code) {
     try {
       const res = await getWxUserProflieByCode({ code, state })
-      console.log('通过获取 code 获取用户信息', res.data)
       if (res && res.data && res.data.openid) {
         localStorage.setItem(USER_INFO_KEY, JSON.stringify({ refreshTokenTime: new Date().getTime(), ...res.data }))
         const currentPath = window.location.pathname
@@ -29,7 +26,6 @@ const useLogin = async () => {
   } else if (userInfo && userInfo.refreshToken) {
     if (!isRefreshTokenWork) {
       const res = await getWxUserProflieRefreshToken({ refreshToken: userInfo.refreshToken })
-      console.log('通过 refreToken 来获取 用户信息', res.data)
       if (res && res.data && res.data.openid) {
         localStorage.setItem(USER_INFO_KEY, JSON.stringify({ refreshTokenTime: new Date().getTime(), ...res.data }))
       } else {
