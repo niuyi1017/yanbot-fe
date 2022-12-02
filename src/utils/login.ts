@@ -1,7 +1,7 @@
 import { getWxUserProflieByCode, getWxUserProflieRefreshToken } from '@/api/wxAuth'
 
 const USER_INFO_KEY = 'userInfo'
-const REDIRECT_URI = encodeURIComponent('http://192.168.0.102:5173')
+const REDIRECT_URI = encodeURIComponent(import.meta.env.VITE_WX_AUTR_REDIRECT_URI)
 const EXPIRES_IN = 29 // resfreshToken 过期时间 （天）
 
 const useLogin = async () => {
