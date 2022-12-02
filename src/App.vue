@@ -35,9 +35,7 @@ const handleTabChange = (index: number) => {
   router.push(tabbarItems.value[index].url || '/')
 }
 onMounted(async () => {
-  const currentPath = window.location.pathname
   await useLogin()
-  router.push(currentPath || tabbarItems.value[activeTab.value].url || '/')
 })
 </script>
 
