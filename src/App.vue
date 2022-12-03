@@ -3,8 +3,9 @@ import { RouterView } from 'vue-router'
 import { onMounted } from 'vue'
 import { useLogin } from './utils/login'
 import TabBar from '@/components/TabBar.vue'
+import type { TabItem } from './types/app-types'
 
-const tabbarItems = [
+const tabbarItems: TabItem[] = [
   {
     text: '订阅',
     isActived: true,

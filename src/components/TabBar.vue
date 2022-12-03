@@ -1,13 +1,8 @@
 <script lang="ts" setup>
 import { ref, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
-interface TabItem {
-  text: string
-  isActived: boolean
-  defaultIcon: string
-  activedIcon: string
-  url: string
-}
+import type { TabItem } from '../types/app-types'
+
 interface Props {
   tabItems: TabItem[]
 }

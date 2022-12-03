@@ -81,8 +81,6 @@ const getData = async () => {
     return []
   }
 }
-
-// console.log(subscribeList.value)
 </script>
 
 <style lang="stylus" scoped>
