@@ -64,7 +64,7 @@ const onRefresh = () => {
 }
 
 onMounted(() => {
-  // onLoad()
+  onLoad()
 })
 
 const handleCancleSubscribe = (id: string) => {

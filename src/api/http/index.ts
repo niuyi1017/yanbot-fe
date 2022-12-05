@@ -9,11 +9,11 @@ const httpInstance = axios.create({
   timeout: 1000 * 10
 })
 
-httpInstance.interceptors.request.use(reqestInterceptor, (err) => {
+httpInstance.interceptors.request.use(reqestInterceptor, err => {
   const error = handleRequestError(err)
   return error
 })
-httpInstance.interceptors.response.use(responseInterceptor, (err) => {
+httpInstance.interceptors.response.use(responseInterceptor, err => {
   const error = handleHttpError(err)
   return error
 })

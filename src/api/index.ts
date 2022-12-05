@@ -5,10 +5,8 @@ import http from './http'
 const getTasks = (data?: any) => {
   const resuestParams: RequestParams = {
     url: '/tasks',
-    // url: '/userInfo',
     method: 'get',
-    params: data,
-    data
+    params: data
   }
   const config: AxiosRequestConfig = {
     timeout: 1000 * 20
@@ -22,5 +20,12 @@ const cancelSubscribeTask = (data?: any) => {
     data
   })
 }
+const test = (data?: any) => {
+  return http({
+    url: '/test',
+    method: 'get',
+    params: data
+  })
+}
 
-export { getTasks, cancelSubscribeTask }
+export { getTasks, cancelSubscribeTask, test }
