@@ -48,7 +48,6 @@ async function handleAccessTokenError(response: AxiosResponse) {
       const _config: any = { ...response.config }
       _config.headers.Authorization = `new accessToken`
       const newRes = await axios({ ..._config })
-      console.log(newRes)
       if (newRes && newRes.data.success) {
         return Promise.resolve(newRes.data)
       } else {
